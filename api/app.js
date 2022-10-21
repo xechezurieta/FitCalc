@@ -16,7 +16,7 @@ const port = process.env.PORT || 3001
 app.use('/api/auth', require('./routes/auth')) */
 
 app.listen(port, () => {
-  console.log('Tu app esta hola por http://localhost'+port)
+  console.log('Tu app esta hola por http://localhost' + port)
 })
 
 /* dbConnect() */
