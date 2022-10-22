@@ -19,4 +19,6 @@ app.listen(port, () => {
   console.log('Tu app esta hola por http://localhost' + port)
 })
 
+app.use('/api/auth', require('./routes/users'))
+
 dbConnect()
