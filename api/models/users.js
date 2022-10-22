@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema(
       enum: ['user', 'admin'],
       default: 'user'
     },
-    macronutirents: {
+    macronutrients: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Macronutrients'
     },
