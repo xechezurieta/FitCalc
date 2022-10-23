@@ -20,5 +20,7 @@ app.listen(port, () => {
 })
 
 app.use('/api/auth', require('./routes/users'))
+app.use('/api/macronutrients', require('./routes/macronutrients'))
+app.use('/api/measures', require('./routes/measures'))
 
 dbConnect()
