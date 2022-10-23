@@ -7,8 +7,7 @@ const MeasuresSchema = new mongoose.Schema(
       required: true
     },
     user_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
+      type: mongoose.Schema.Types.ObjectId
     },
     neck: {
       type: Number

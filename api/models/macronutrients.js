@@ -7,8 +7,7 @@ const MacronutrientsSchema = new mongoose.Schema(
       required: true
     },
     user_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
+      type: mongoose.Schema.Types.ObjectId
     },
     calories: {
       type: Number,
