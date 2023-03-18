@@ -49,8 +49,14 @@ const updateMeasures = async (req, res) => {
 const deleteMeasure = async (req, res) => {
   try {
     const { id } = matchedData(req)
-    const matchedMeasure = await measuresModel.delete({ _id: id })
-    res.send({ data: matchedMeasure, deleted: true })
+    const { user_id: userId } = await measuresModel.findById(id)
+    const deleted = await measuresModel.delete({ _id: id })
+    const measuresList = await measuresModel.find({ user_id: userId })
+    if (measuresList) {
+      const latestMacronutrient = measuresList.reduce(function (a, b) { return a.date > b.date ? a : b })
+      await usersModel.findByIdAndUpdate(userId, { measures: latestMacronutrient._id }, { new: true })
+    }
+    res.send({ data: deleted, deleted: true })
   } catch (e) {
     handleHttpError(res, 'ERROR_DELETE_MEASURE')
   }

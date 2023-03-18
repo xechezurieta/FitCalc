@@ -20,6 +20,7 @@ const addMacronutrients = async (req, res) => {
       res.send({ data, updatedUser })
     }
   } catch (e) {
+    console.log(e)
     handleHttpError(res, 'ERROR_ADD_MACRONUTRIENTS')
   }
 }
@@ -49,8 +50,15 @@ const updateMacronutrients = async (req, res) => {
 const deleteMacronutrients = async (req, res) => {
   try {
     const { id } = matchedData(req)
-    const matchedMacronutrients = await macronutriensModel.delete({ _id: id })
-    res.send({ data: matchedMacronutrients, deleted: true })
+    const { user_id: userId } = await macronutriensModel.findById(id)
+    const deleted = await macronutriensModel.delete({ _id: id })
+    const macronutrientsList = await macronutriensModel.find({ user_id: userId })
+    if (macronutrientsList) {
+      const latestMacronutrient = macronutrientsList.reduce(function (a, b) { return a.date > b.date ? a : b })
+      await usersModel.findByIdAndUpdate(userId, { macronutrients: latestMacronutrient._id }, { new: true })
+    }
+
+    res.send({ data: deleted, deleted: true })
   } catch (e) {
     handleHttpError(res, 'ERROR_DELETE_MACRONUTRIENTS')
   }
