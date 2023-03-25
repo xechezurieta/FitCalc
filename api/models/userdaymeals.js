@@ -17,7 +17,8 @@ const UserDayMealsSchema = new mongoose.Schema(
         carbohydrates: { type: Number, required: true },
         food_id: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Food'
+          ref: 'Food',
+          required: true
         }
       }
     ],
@@ -32,7 +33,8 @@ const UserDayMealsSchema = new mongoose.Schema(
         carbohydrates: { type: Number, required: true },
         food_id: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Food'
+          ref: 'Food',
+          required: true
         }
       }
     ],
@@ -47,7 +49,8 @@ const UserDayMealsSchema = new mongoose.Schema(
         carbohydrates: { type: Number, required: true },
         food_id: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Food'
+          ref: 'Food',
+          required: true
         }
       }
     ],
@@ -67,7 +70,8 @@ const UserDayMealsSchema = new mongoose.Schema(
       }
     ],
     user_id: {
-      type: mongoose.Schema.Types.ObjectId
+      type: mongoose.Schema.Types.ObjectId,
+      required: true
     }
 
   },

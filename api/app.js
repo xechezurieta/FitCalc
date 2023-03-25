@@ -23,5 +23,6 @@ app.use('/api/auth', require('./routes/users'))
 app.use('/api/macronutrients', require('./routes/macronutrients'))
 app.use('/api/measures', require('./routes/measures'))
 app.use('/api/foods', require('./routes/foods'))
+app.use('/api/user-day-meals', require('./routes/userDayMeals'))
 
 dbConnect()
