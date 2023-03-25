@@ -12,6 +12,15 @@ const addFood = async (req, res) => {
   }
 }
 
+const getAllFoods = async (req, res) => {
+  try {
+    const data = await foodsModel.find()
+    res.send({ data })
+  } catch (e) {
+    handleHttpError(res, 'ERROR_GET_ALL_FOODS')
+  }
+}
+
 const updateFood = async (req, res) => {
   try {
     req = matchedData(req)
@@ -43,4 +52,4 @@ const deleteFood = async (req, res) => {
   }
 }
 
-module.exports = { addFood, updateFood, findFood, deleteFood }
+module.exports = { addFood, updateFood, findFood, deleteFood, getAllFoods }

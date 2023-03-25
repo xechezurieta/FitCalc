@@ -2,6 +2,14 @@ const { matchedData } = require('express-validator')
 const { userDayMealsModel, usersModel } = require('../models')
 const { handleHttpError } = require('../utils/handleError')
 
+const getAllDayMeals = async (req, res) => {
+  try {
+    const data = await userDayMealsModel.find()
+    res.send({ data })
+  } catch (e) {
+    handleHttpError(res, 'ERROR_GET_ALL_DAY_MEALS')
+  }
+}
 const addUserDayMeal = async (req, res) => {
   try {
     const body = matchedData(req)
@@ -54,4 +62,4 @@ const deleteUserDayMeal = async (req, res) => {
   }
 }
 
-module.exports = { addUserDayMeal, updateUserDayMeal, findUserDayMealsByUser, findUserDayMeal, deleteUserDayMeal }
+module.exports = { getAllDayMeals, addUserDayMeal, updateUserDayMeal, findUserDayMealsByUser, findUserDayMeal, deleteUserDayMeal }
