@@ -10,6 +10,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run dev --workspace=app",
     "dev:api": "npm run dev --workspace=api",
     "lint:api": "npm run lint --workspace=api"
   },
