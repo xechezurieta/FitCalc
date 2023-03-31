@@ -8,5 +8,4 @@ const Select = ({className , ...props}) => (
   </div>
 )
 
-
 export default Select

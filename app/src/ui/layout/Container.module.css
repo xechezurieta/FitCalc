@@ -1,0 +1,4 @@
+.wrapper {
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
